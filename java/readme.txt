@@ -1,1 +1,1 @@
-Для java
+for java

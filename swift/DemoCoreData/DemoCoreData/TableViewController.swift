@@ -115,6 +115,22 @@ class TableViewController: UITableViewController {
         return cell
     }
     
+    //TODO:  понять как доделать правильно
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard let ts = tasks[indexPath.row].title as? Task, editingStyle == .delete else { return }
+        
+        let context = getContext()
+        
+        context.delete(ts)
+        
+        do {
+            try context.save()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+     }
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -160,5 +176,7 @@ class TableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+ 
 
 }

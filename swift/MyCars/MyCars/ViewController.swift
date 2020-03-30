@@ -103,6 +103,12 @@ class ViewController: UIViewController {
     private func update(rating: Double) {
         car.rating = rating
         
+        if rating == 10 {
+            car.myChoice = true
+        } else {
+            car.myChoice = false
+        }
+        
         do {
             try context.save()
             insertDataFrom(selectedCar: car)

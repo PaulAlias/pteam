@@ -31,7 +31,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Uqh-7M-SPM" kind="show" id="LIv-oO-jEA"/>
+                                    <action selector="taped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3DR-hh-3HR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -50,6 +50,7 @@
                     <connections>
                         <outlet property="button" destination="zNN-oe-FId" id="Sp8-A3-avG"/>
                         <outlet property="imageView" destination="xfF-rA-LxI" id="cN4-6U-3bt"/>
+                        <segue destination="Uqh-7M-SPM" kind="show" identifier="showSecondScreen" id="scq-Ce-qOA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -73,9 +74,6 @@
                                 <state key="normal" title="второй">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="RB0-CA-8pY"/>
-                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Ford-Focus-5" translatesAutoresizingMaskIntoConstraints="NO" id="6yz-IO-hEW">
                                 <rect key="frame" x="57" y="130" width="300" height="300"/>

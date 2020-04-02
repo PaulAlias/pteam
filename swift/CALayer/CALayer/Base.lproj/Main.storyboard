@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="CALayer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ford-Focus-5" translatesAutoresizingMaskIntoConstraints="NO" id="xfF-rA-LxI">
+                                <rect key="frame" x="66" y="119" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="XAQ-jq-ahU"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zNN-oe-FId">
+                                <rect key="frame" x="121" y="687" width="173" height="57"/>
+                                <color key="backgroundColor" red="0.32753765579999999" green="0.58372575039999997" blue="0.63139617439999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="173" id="oxW-1U-XxK"/>
+                                </constraints>
+                                <state key="normal" title="первый">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Uqh-7M-SPM" kind="show" id="LIv-oO-jEA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="xfF-rA-LxI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="75" id="B9F-1q-7wZ"/>
+                            <constraint firstItem="zNN-oe-FId" firstAttribute="top" secondItem="xfF-rA-LxI" secondAttribute="bottom" constant="260" id="CeI-9m-7bs"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zNN-oe-FId" secondAttribute="bottom" constant="118" id="DSu-Jr-Yya"/>
+                            <constraint firstItem="zNN-oe-FId" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="NpR-wT-fta"/>
+                            <constraint firstItem="xfF-rA-LxI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="66" id="VCN-aC-FnK"/>
+                            <constraint firstItem="xfF-rA-LxI" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="9" id="hdV-l0-r3X"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="68F-Dx-bzo"/>
+                    <connections>
+                        <outlet property="button" destination="zNN-oe-FId" id="Sp8-A3-avG"/>
+                        <outlet property="imageView" destination="xfF-rA-LxI" id="cN4-6U-3bt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+        <!--Second View Controller-->
+        <scene sceneID="iqt-ep-5Xd">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="Uqh-7M-SPM" customClass="SecondViewController" customModule="CALayer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zlw-2r-k0r">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Sg-Sy-nBi">
+                                <rect key="frame" x="121" y="689" width="173" height="55"/>
+                                <color key="backgroundColor" red="0.32753765579999999" green="0.58372575039999997" blue="0.63139617439999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="173" id="xaj-Et-sxx"/>
+                                </constraints>
+                                <state key="normal" title="второй">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="RB0-CA-8pY"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Ford-Focus-5" translatesAutoresizingMaskIntoConstraints="NO" id="6yz-IO-hEW">
+                                <rect key="frame" x="57" y="130" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="e3H-tZ-QyA"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="3Sg-Sy-nBi" firstAttribute="centerX" secondItem="9a1-zl-12a" secondAttribute="centerX" id="E9Y-OT-NVi"/>
+                            <constraint firstItem="9a1-zl-12a" firstAttribute="bottom" secondItem="3Sg-Sy-nBi" secondAttribute="bottom" constant="117" id="LcD-lS-Wc6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9a1-zl-12a"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3Fe-Gm-C8a"/>
+                    <connections>
+                        <outlet property="button" destination="3Sg-Sy-nBi" id="ldT-6Q-TMy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9rc-bg-oPX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1188.4057971014495" y="137.94642857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Ford-Focus-5" width="700" height="472"/>
+    </resources>
+</document>

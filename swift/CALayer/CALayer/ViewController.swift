@@ -70,6 +70,7 @@ class ViewController: UIViewController, CAAnimationDelegate{
     
     private func configShapeLayer(_ shapeLayer: CAShapeLayer) {
         shapeLayer.frame = view.bounds
+        
         let path = UIBezierPath()
         path.move(to: CGPoint(x: self.view.frame.width / 2 - 100, y: self.view.frame.height / 2 + 50))
         path.addLine(to: CGPoint(x: self.view.frame.width / 2 + 100, y: self.view.frame.height / 2 + 50))

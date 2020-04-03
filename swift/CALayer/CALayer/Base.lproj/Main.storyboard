@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="CALayer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="CALayer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,7 +65,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Sg-Sy-nBi">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Sg-Sy-nBi">
                                 <rect key="frame" x="121" y="689" width="173" height="55"/>
                                 <color key="backgroundColor" red="0.32753765579999999" green="0.58372575039999997" blue="0.63139617439999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -74,24 +74,33 @@
                                 <state key="normal" title="второй">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="tapped:" destination="Uqh-7M-SPM" eventType="touchUpInside" id="p7X-FD-hLG"/>
+                                </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Ford-Focus-5" translatesAutoresizingMaskIntoConstraints="NO" id="6yz-IO-hEW">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ford-Focus-5" translatesAutoresizingMaskIntoConstraints="NO" id="6yz-IO-hEW">
                                 <rect key="frame" x="57" y="130" width="300" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="e3H-tZ-QyA"/>
+                                    <constraint firstAttribute="height" constant="300" id="FIo-al-RfW"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="3Sg-Sy-nBi" firstAttribute="centerX" secondItem="9a1-zl-12a" secondAttribute="centerX" id="E9Y-OT-NVi"/>
-                            <constraint firstItem="9a1-zl-12a" firstAttribute="bottom" secondItem="3Sg-Sy-nBi" secondAttribute="bottom" constant="117" id="LcD-lS-Wc6"/>
+                            <constraint firstItem="9a1-zl-12a" firstAttribute="bottom" secondItem="3Sg-Sy-nBi" secondAttribute="bottom" constant="118" id="LcD-lS-Wc6"/>
+                            <constraint firstItem="3Sg-Sy-nBi" firstAttribute="top" secondItem="6yz-IO-hEW" secondAttribute="bottom" constant="259" id="OhU-TH-150"/>
+                            <constraint firstItem="6yz-IO-hEW" firstAttribute="top" secondItem="9a1-zl-12a" secondAttribute="top" constant="86" id="Snm-V8-N1K"/>
+                            <constraint firstItem="6yz-IO-hEW" firstAttribute="leading" secondItem="9a1-zl-12a" secondAttribute="leading" constant="57" id="aXN-P6-egG"/>
+                            <constraint firstItem="6yz-IO-hEW" firstAttribute="centerX" secondItem="9a1-zl-12a" secondAttribute="centerX" id="rdb-E7-xEl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9a1-zl-12a"/>
                     </view>
                     <navigationItem key="navigationItem" id="3Fe-Gm-C8a"/>
                     <connections>
                         <outlet property="button" destination="3Sg-Sy-nBi" id="ldT-6Q-TMy"/>
+                        <outlet property="imageView" destination="6yz-IO-hEW" id="Plv-7d-Vqs"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="showFirstScreen" id="FRJ-px-VHa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9rc-bg-oPX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

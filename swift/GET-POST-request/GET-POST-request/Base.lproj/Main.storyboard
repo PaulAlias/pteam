@@ -1,111 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hCV-SH-RqJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zjr-WE-WwN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Controls-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="EhA-Rk-nZa">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GET_POST_request" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <collectionViewController id="kU0-MU-3eh" customClass="MainViewController" customModule="GET_POST_request" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="xSv-cj-DF0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="2JX-JL-snM">
-                                <rect key="frame" x="16" y="128" width="382" height="689"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5BZ-G7-QEQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="135"/>
-                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="Press to Dowload Image">
-                                            <color key="titleColor" red="0.97940324519999999" green="1" blue="0.99278088470000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="8"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <segue destination="8m6-IS-3Pi" kind="show" identifier="DownloadImageSegue" id="g8Y-C7-e7X"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AaX-QL-1g3">
-                                        <rect key="frame" x="0.0" y="185" width="382" height="134.5"/>
-                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="GET">
-                                            <color key="titleColor" red="0.97940324519999999" green="1" blue="0.99278088470000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="8"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="getAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Xh-gp-8tM"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kiS-OV-7fy">
-                                        <rect key="frame" x="0.0" y="369.5" width="382" height="135"/>
-                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="POST">
-                                            <color key="titleColor" red="0.97940324519999999" green="1" blue="0.99278088470000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="8"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="postAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="12S-i5-nNi"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Mh-sp-Z8A">
-                                        <rect key="frame" x="0.0" y="554.5" width="382" height="134.5"/>
-                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="Our courses">
-                                            <color key="titleColor" red="0.97940324519999999" green="1" blue="0.99278088470000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="8"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="postAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8P5-QM-lgH"/>
-                                            <segue destination="NiX-QX-bJ3" kind="show" identifier="OurSegue" id="VAn-xK-nSy"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2JX-JL-snM" secondAttribute="bottom" constant="45" id="2y3-oB-ej5"/>
-                            <constraint firstItem="2JX-JL-snM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="T0z-7A-okW"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2JX-JL-snM" secondAttribute="trailing" constant="16" id="UA6-D3-4qe"/>
-                            <constraint firstItem="2JX-JL-snM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="hmM-8G-lAF"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Controls" id="Wz6-kV-dwK"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="40" minimumInteritemSpacing="40" sectionInsetReference="safeArea" id="nwN-tu-f95">
+                            <size key="itemSize" width="340" height="100"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="40" maxX="0.0" maxY="40"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="YYb-cm-eZF" customClass="CollectionViewCell" customModule="GET_POST_request" customModuleProvider="target">
+                                <rect key="frame" x="37" y="40" width="340" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="jeE-I5-oFR">
+                                    <rect key="frame" x="0.0" y="0.0" width="340" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbQ-id-oDd">
+                                            <rect key="frame" x="0.0" y="0.0" width="340" height="100"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                            <color key="textColor" red="0.97940324519999999" green="1" blue="0.99278088470000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="dbQ-id-oDd" secondAttribute="bottom" id="58n-Hl-0ci"/>
+                                        <constraint firstItem="dbQ-id-oDd" firstAttribute="top" secondItem="jeE-I5-oFR" secondAttribute="top" id="5Hn-gZ-3n9"/>
+                                        <constraint firstItem="dbQ-id-oDd" firstAttribute="leading" secondItem="jeE-I5-oFR" secondAttribute="leading" id="fBe-PH-EYD"/>
+                                        <constraint firstAttribute="trailing" secondItem="dbQ-id-oDd" secondAttribute="trailing" id="qqk-bm-Zb0"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="customSize" width="340" height="100"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="labelCell" destination="dbQ-id-oDd" id="0Bw-yX-a3r"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="kU0-MU-3eh" id="BPb-Kd-ZqS"/>
+                            <outlet property="delegate" destination="kU0-MU-3eh" id="ee9-zU-g4Y"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Controls" id="3V9-vA-pBL"/>
                     <connections>
-                        <outlet property="downloadButton" destination="5BZ-G7-QEQ" id="m4D-7V-yLS"/>
-                        <outlet property="getButton" destination="AaX-QL-1g3" id="0pM-24-Apo"/>
-                        <outlet property="ourCourses" destination="5Mh-sp-Z8A" id="z9O-Os-cZ2"/>
-                        <outlet property="postButton" destination="kiS-OV-7fy" id="Xfg-px-5IS"/>
+                        <segue destination="8m6-IS-3Pi" kind="show" identifier="ShowImage" id="Wmx-hf-pSW"/>
+                        <segue destination="NiX-QX-bJ3" kind="show" identifier="OurCorses" id="Cgp-jQ-TK7"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hTG-DD-pPW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1078" y="137"/>
+            <point key="canvasLocation" x="1776.8115942028987" y="355.58035714285711"/>
         </scene>
         <!--Courses View Controller-->
         <scene sceneID="3xl-lm-RfK">
@@ -119,7 +83,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="100" id="4Kr-7S-D3i" userLabel="Cell" customClass="TableViewCell" customModule="GET_POST_request" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="100" id="4Kr-7S-D3i" userLabel="Cell" customClass="TableViewCell" customModule="GET_POST_request" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Kr-7S-D3i" id="9MW-Pu-sOd">
@@ -193,12 +157,12 @@
                     <navigationItem key="navigationItem" id="Pa4-jl-YDR"/>
                     <connections>
                         <outlet property="tableView" destination="JeJ-uP-iAH" id="l7I-sg-7TP"/>
-                        <segue destination="Kx7-M2-1fI" kind="show" id="0KU-tO-abu"/>
+                        <segue destination="Kx7-M2-1fI" kind="show" identifier="Description" id="0KU-tO-abu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="llE-gG-6i3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1946" y="696"/>
+            <point key="canvasLocation" x="2855.072463768116" y="695.75892857142856"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="S2n-gY-Pjm">
@@ -233,10 +197,14 @@
                         <viewLayoutGuide key="safeArea" id="vir-Sr-hub"/>
                     </view>
                     <navigationItem key="navigationItem" id="O2P-AZ-if7"/>
+                    <connections>
+                        <outlet property="progressView" destination="liU-9B-dTg" id="nxk-uS-wBU"/>
+                        <outlet property="webView" destination="e10-qO-fxb" id="3v8-wf-rt8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4qq-V1-w8L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2930" y="696"/>
+            <point key="canvasLocation" x="3839.130434782609" y="695.75892857142856"/>
         </scene>
         <!--Image-->
         <scene sceneID="kp8-ug-JYv">
@@ -276,25 +244,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Idc-7a-2tv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1946" y="-114"/>
+            <point key="canvasLocation" x="2855.072463768116" y="-114.50892857142857"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="nua-sB-2Vh">
+        <scene sceneID="0P4-dN-KDH">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hCV-SH-RqJ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zjr-WE-WwN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rzM-oq-cKT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uv2-IJ-b8r">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="DPz-IT-0i1"/>
+                        <segue destination="kU0-MU-3eh" kind="relationship" relationship="rootViewController" id="Ejb-D5-u5Z"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CXf-Tm-48c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1fs-FP-2p1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138.40000000000001" y="137.18140929535232"/>
+            <point key="canvasLocation" x="866.66666666666674" y="355.58035714285711"/>
         </scene>
     </scenes>
 </document>

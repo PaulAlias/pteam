@@ -1,0 +1,6 @@
+framework module Pods_GET_POST_request {
+  umbrella header "Pods-GET-POST-request-umbrella.h"
+
+  export *
+  module * { export * }
+}

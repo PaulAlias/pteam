@@ -64,14 +64,14 @@
                     <navigationItem key="navigationItem" title="Controls" id="3V9-vA-pBL"/>
                     <connections>
                         <segue destination="8m6-IS-3Pi" kind="show" identifier="ShowImage" id="Wmx-hf-pSW"/>
-                        <segue destination="NiX-QX-bJ3" kind="show" identifier="OurCorses" id="Cgp-jQ-TK7"/>
+                        <segue destination="NiX-QX-bJ3" kind="show" identifier="OurCourses" id="Cgp-jQ-TK7"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hTG-DD-pPW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1776.8115942028987" y="355.58035714285711"/>
         </scene>
-        <!--Courses View Controller-->
+        <!--Our Curses-->
         <scene sceneID="3xl-lm-RfK">
             <objects>
                 <viewController id="NiX-QX-bJ3" customClass="CoursesViewController" customModule="GET_POST_request" customModuleProvider="target" sceneMemberID="viewController">
@@ -83,7 +83,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="100" id="4Kr-7S-D3i" userLabel="Cell" customClass="TableViewCell" customModule="GET_POST_request" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="100" id="4Kr-7S-D3i" userLabel="Cell" customClass="TableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Kr-7S-D3i" id="9MW-Pu-sOd">
@@ -135,6 +135,9 @@
                                                 <constraint firstItem="791-fv-xvZ" firstAttribute="top" secondItem="4cf-cx-jiK" secondAttribute="bottom" constant="8" id="y9B-qi-usl"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <string key="customModule" base64-UTF8="YES">
+CQ
+</string>
                                         <connections>
                                             <outlet property="courseImage" destination="U0m-xc-CdK" id="wAl-tV-yHJ"/>
                                             <outlet property="courseNameLabel" destination="4cf-cx-jiK" id="FcY-0s-U4m"/>
@@ -154,7 +157,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lBJ-AP-QEW"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Pa4-jl-YDR"/>
+                    <navigationItem key="navigationItem" title="Our Curses" id="Pa4-jl-YDR"/>
                     <connections>
                         <outlet property="tableView" destination="JeJ-uP-iAH" id="l7I-sg-7TP"/>
                         <segue destination="Kx7-M2-1fI" kind="show" identifier="Description" id="0KU-tO-abu"/>

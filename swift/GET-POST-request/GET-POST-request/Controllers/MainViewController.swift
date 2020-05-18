@@ -139,7 +139,7 @@ class MainViewController: UICollectionViewController {
         case .post:
             NetworkManager.postRequest(url: url)
         case .ourCourses:
-            performSegue(withIdentifier: "OurCorses", sender: self)
+             performSegue(withIdentifier: "OurCourses", sender: self)
         case .uploadImage :
             NetworkManager.uploadImage(url: uploadImage)
         case .downloadFile:

@@ -28,6 +28,10 @@ class NetworkManager {
         session.dataTask(with: url) { (data, response, error) in
             guard let response = response, let data = data  else { return }
             
+            print(response)
+            print(data)
+            
+            
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
                 print(json)

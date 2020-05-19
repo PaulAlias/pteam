@@ -9,6 +9,7 @@ import UIKit
 import FBSDKLoginKit
 import FirebaseAuth
 import FirebaseDatabase
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
     var userProfile: UserProfile?
@@ -35,8 +36,44 @@ class LoginViewController: UIViewController {
         return loginButton
     }()
     
+    lazy var googleLoginButton: GIDSignInButton = {
+        let loginButton = GIDSignInButton()
+        loginButton.frame = CGRect(x: 32, y: 380 + 80 + 80, width: view.frame.width - 64, height: 50)
+        loginButton.layer.cornerRadius = 4
+        
+        return loginButton
+    }()
+    
+    lazy var customGoogleLoginButton: UIButton = {
+        let loginButton = UIButton()
+        loginButton.backgroundColor = .white
+        loginButton.setTitle("Вход через Google", for: .normal)
+        loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        loginButton.setTitleColor(.gray, for: .normal)
+        loginButton.frame = CGRect(x: 32, y: 380 + 80 + 80 + 80, width: view.frame.width - 64, height: 50)
+        loginButton.layer.cornerRadius = 4
+        
+        loginButton.addTarget(self, action: #selector(handleCustomGoogleLogin), for: .touchUpInside)
+        return loginButton
+    }()
+    
+    lazy var signinWithEmail: UIButton = {
+        let loginButton = UIButton()
+        loginButton.backgroundColor = .none
+        loginButton.setTitle("Зарегистрироваться", for: .normal)
+        loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        loginButton.setTitleColor(.white, for: .normal)
+        loginButton.frame = CGRect(x: 32, y: 380 + 80 + 80 + 80 + 80, width: view.frame.width - 64, height: 50)
+        loginButton.layer.cornerRadius = 4
+        
+        loginButton.addTarget(self, action: #selector(openSignInViewController), for: .touchUpInside)
+        return loginButton
+        
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         
@@ -44,25 +81,24 @@ class LoginViewController: UIViewController {
         //         if let token = AccessToken.current, !token.isExpired {
         //            print("The user is logged in")
         //        }
+        
         setupViews()
+        
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance()?.presentingViewController = self
     }
     
     private func setupViews() {
         view.addSubview(fbLoginButton)
         view.addSubview(customFBLoginButton)
+        view.addSubview(googleLoginButton)
+        view.addSubview(customGoogleLoginButton)
+        view.addSubview(signinWithEmail)
     }
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    @objc private func openSignInViewController() {
+        performSegue(withIdentifier: "SignIn", sender: self)
+    } 
 }
 
 //MARK: FaceBook SDK
@@ -98,13 +134,13 @@ extension LoginViewController: LoginButtonDelegate {
                 return
             }
             
-             guard let result = result else { return }
+            guard let result = result else { return }
             
             if result.isCancelled { return }
             else {
                 
                 self.signIntoFirebase()
-               
+                
             }
         }
         
@@ -150,7 +186,7 @@ extension LoginViewController: LoginButtonDelegate {
     
     private func saveIntoFirebase() {
         
-       guard let uid = Auth.auth().currentUser?.uid  else { return }
+        guard let uid = Auth.auth().currentUser?.uid  else { return }
         
         let userData = ["name" : userProfile?.name, "email" : userProfile?.email]
         
@@ -166,4 +202,50 @@ extension LoginViewController: LoginButtonDelegate {
             self.openMainViewController()
         }
     }
+}
+
+
+//MARK: Google SDK
+
+extension LoginViewController: GIDSignInDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+        if let error = error {
+            print("failed to logged into google: ", error.localizedDescription)
+            return
+        }
+        
+        print("Successfuly logged into google")
+        
+        if let userName = user.profile.name, let userEmail = user.profile.email {
+            let userData = ["name" : userName, "email" : userEmail]
+            userProfile = UserProfile(data: userData)
+            
+            
+        }
+        
+        guard let authentication = user.authentication else { return }
+        
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        
+        Auth.auth().signIn(with: credential) { (user, error) in
+            
+            if let error = error {
+                print("Somthing went wrong with our Google user: ", error.localizedDescription)
+            }
+            
+            print("Successfuly logged into firebase with google")
+            self.saveIntoFirebase()
+            
+        }
+        
+    }
+    
+    @objc private func handleCustomGoogleLogin() {
+        GIDSignIn.sharedInstance()?.signIn()
+    }
+    
+    
 }

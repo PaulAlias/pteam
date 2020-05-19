@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2C1A3B34246C3DF3008B399F /* AlamofireNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1A3B33246C3DF3008B399F /* AlamofireNetworkRequest.swift */; };
+		2C6619222473FA7500752131 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6619212473FA7500752131 /* SignInViewController.swift */; };
+		2C6619242473FA8500752131 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6619232473FA8500752131 /* SignUpViewController.swift */; };
 		2C77E0602472B6A000483576 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C77E05F2472B6A000483576 /* LoginViewController.swift */; };
 		2C77E0622472C09600483576 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C77E0612472C09600483576 /* UserProfileViewController.swift */; };
 		2C77E0642472F94E00483576 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C77E0632472F94E00483576 /* Extension.swift */; };
@@ -34,6 +36,8 @@
 
 /* Begin PBXFileReference section */
 		2C1A3B33246C3DF3008B399F /* AlamofireNetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkRequest.swift; sourceTree = "<group>"; };
+		2C6619212473FA7500752131 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		2C6619232473FA8500752131 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		2C77E05C2472AC9B00483576 /* Networking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Networking.entitlements; sourceTree = "<group>"; };
 		2C77E05F2472B6A000483576 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2C77E0612472C09600483576 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +123,8 @@
 				2C77E0612472C09600483576 /* UserProfileViewController.swift */,
 				2C77E06D247322DC00483576 /* CurrentUser.swift */,
 				2C77E05F2472B6A000483576 /* LoginViewController.swift */,
+				2C6619212473FA7500752131 /* SignInViewController.swift */,
+				2C6619232473FA8500752131 /* SignUpViewController.swift */,
 				2C1A3B33246C3DF3008B399F /* AlamofireNetworkRequest.swift */,
 				A8493E762147DC20004DE8A8 /* NetworkManager.swift */,
 				A855BC1B214F71FE00075CAE /* DataProvider.swift */,
@@ -153,6 +159,7 @@
 				A83C301A2108401A00592AE4 /* Frameworks */,
 				A83C301B2108401A00592AE4 /* Resources */,
 				970CBEC48AC4C888A6650EC0 /* [CP] Embed Pods Frameworks */,
+				B1792D6B748E4286D949BEEE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -251,6 +258,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Networking/Pods-Networking-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B1792D6B748E4286D949BEEE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Networking/Pods-Networking-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Networking/Pods-Networking-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Networking/Pods-Networking-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -267,10 +291,12 @@
 				A895579E214278DB00355357 /* Course.swift in Sources */,
 				2C77E0642472F94E00483576 /* Extension.swift in Sources */,
 				A89557A02142808500355357 /* WebsiteDescription.swift in Sources */,
+				2C6619222473FA7500752131 /* SignInViewController.swift in Sources */,
 				A806CF94210B4EA300574064 /* ImageViewController.swift in Sources */,
 				A855BC1C214F71FE00075CAE /* DataProvider.swift in Sources */,
 				A8255C80214103450074F6D0 /* WebViewController.swift in Sources */,
 				A83C30212108401A00592AE4 /* AppDelegate.swift in Sources */,
+				2C6619242473FA8500752131 /* SignUpViewController.swift in Sources */,
 				A8493E712147D7B7004DE8A8 /* MainViewController.swift in Sources */,
 				A8255C8621410DFE0074F6D0 /* TableViewCell.swift in Sources */,
 				A8255C8421410AFA0074F6D0 /* CoursesViewController.swift in Sources */,

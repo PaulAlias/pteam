@@ -9,21 +9,32 @@ import UIKit
 import FBSDKLoginKit
 import FirebaseAuth
 import FirebaseDatabase
+import GoogleSignIn
 
 class UserProfileViewController: UIViewController {
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var activityIndicatior: UIActivityIndicatorView!
     
-    lazy var fbLoginButton: UIButton = {
+    private var provider: String?
+    private var currentUser: CurrentUser?
+    
+    
+    lazy var logoutButton: UIButton = {
         
-         let loginButton = FBLoginButton()
-        loginButton.frame = CGRect(x: 32, y: view.frame.height - 172, width: view.frame.width - 64, height: 50)
-         loginButton.delegate = self
-         //loginButton.center = view.center
-         return loginButton
-     }()
-
+        let button = UIButton()
+        button.frame = CGRect(x: 32, y: view.frame.height - 172, width: view.frame.width - 64, height: 50)
+        //loginButton.delegate = self
+        //loginButton.center = view.center
+        button.backgroundColor = UIColor(hexValue: "#3B5999", alpha: 1)
+        button.setTitle("Log Out", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 4
+        button.addTarget(self, action: #selector(signOut), for: .touchUpInside)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +42,7 @@ class UserProfileViewController: UIViewController {
         
         userNameLabel.isHidden = true
         setupeView()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -42,43 +53,24 @@ class UserProfileViewController: UIViewController {
     
     
     private func setupeView() {
-        view.addSubview(fbLoginButton)
+        view.addSubview(logoutButton)
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
-//MARK: FaceBook SDK
 
-extension UserProfileViewController: LoginButtonDelegate {
-    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        if error != nil {
-            print(error)
-            return
-            
-        }
-        
-        print("Succefully logged in with FaceBook ...")
-
-    }
-    
-    
-    
-    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-        
-        openLoginViewController()
-         print("Did log out of FaceBook ...")
-    }
+extension UserProfileViewController {
     
     private func openLoginViewController() {
         
@@ -109,12 +101,12 @@ extension UserProfileViewController: LoginButtonDelegate {
                 
                 self.activityIndicatior.stopAnimating()
                 self.userNameLabel.isHidden = false
-
-                let currentUser = CurrentUser(uid: uid, data: userData)
                 
-
+                self.currentUser = CurrentUser(uid: uid, data: userData)
                 
-                self.userNameLabel.text = "\(currentUser?.name ?? "Noname") Logged in with FaceBook"
+                
+                
+                self.userNameLabel.text = self.getProviderData()
                 
                 
             }) { (error) in
@@ -123,5 +115,47 @@ extension UserProfileViewController: LoginButtonDelegate {
         }
     }
     
+    @objc private func signOut() {
+        
+        if let providerData = Auth.auth().currentUser?.providerData {
+            
+            for userInfo in providerData {
+                
+                switch userInfo.providerID {
+                case "facebook.com":
+                    LoginManager().logOut()
+                    print("User did log out of Facebook")
+                    openLoginViewController()
+                case "google.com":
+                    GIDSignIn.sharedInstance()?.signOut()
+                    print("User did log out of Google")
+                    openLoginViewController()
+                default:
+                    print("User is signed in with \(userInfo.providerID)")
+                }
+            }
+        }
+        
+    }
     
+    private func getProviderData() -> String {
+        var greetings = ""
+        
+        if let providerData = Auth.auth().currentUser?.providerData {
+            for userInfo in providerData {
+                switch userInfo.providerID {
+                case "facebook.com":
+                    provider = "Facebook"
+                case "google.com":
+                    provider = "Google"
+                default:
+                    break
+                }
+            }
+            
+            greetings = "\(currentUser?.name ?? "Noname") logged in with \(provider!)"
+        }
+        
+        return greetings
+    }
 }

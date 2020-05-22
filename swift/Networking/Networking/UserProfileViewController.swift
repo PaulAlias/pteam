@@ -92,25 +92,32 @@ extension UserProfileViewController {
     
     private func fetchingUserData() {
         
-        if Auth.auth().currentUser != nil {
-            guard let uid = Auth.auth().currentUser?.uid else { return }
+        if let userName = Auth.auth().currentUser?.displayName {
+            activityIndicatior.stopAnimating()
+            userNameLabel.isHidden = false
+            userNameLabel.text = getProviderData(with: userName)
+        } else {
             
-            Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            if Auth.auth().currentUser != nil {
+                guard let uid = Auth.auth().currentUser?.uid else { return }
                 
-                guard let userData = snapshot.value as? [String : Any] else { return }
-                
-                self.activityIndicatior.stopAnimating()
-                self.userNameLabel.isHidden = false
-                
-                self.currentUser = CurrentUser(uid: uid, data: userData)
-                
-                
-                
-                self.userNameLabel.text = self.getProviderData()
-                
-                
-            }) { (error) in
-                print(error)
+                Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                    
+                    guard let userData = snapshot.value as? [String : Any] else { return }
+                    
+                    self.activityIndicatior.stopAnimating()
+                    self.userNameLabel.isHidden = false
+                    
+                    self.currentUser = CurrentUser(uid: uid, data: userData)
+                    
+                    
+                    
+                    self.userNameLabel.text = self.getProviderData(with: self.currentUser?.name ?? "Noname")
+                    
+                    
+                }) { (error) in
+                    print(error)
+                }
             }
         }
     }
@@ -130,6 +137,10 @@ extension UserProfileViewController {
                     GIDSignIn.sharedInstance()?.signOut()
                     print("User did log out of Google")
                     openLoginViewController()
+                case "password":
+                    try! Auth.auth().signOut()
+                    print("User did log out of Email")
+                    openLoginViewController()
                 default:
                     print("User is signed in with \(userInfo.providerID)")
                 }
@@ -138,7 +149,7 @@ extension UserProfileViewController {
         
     }
     
-    private func getProviderData() -> String {
+    private func getProviderData(with user: String) -> String {
         var greetings = ""
         
         if let providerData = Auth.auth().currentUser?.providerData {
@@ -148,12 +159,14 @@ extension UserProfileViewController {
                     provider = "Facebook"
                 case "google.com":
                     provider = "Google"
+                case "password":
+                    provider = "Email"
                 default:
                     break
                 }
             }
             
-            greetings = "\(currentUser?.name ?? "Noname") logged in with \(provider!)"
+            greetings = "\(user) logged in with \(provider!)"
         }
         
         return greetings

@@ -116,8 +116,6 @@ extension LoginViewController: LoginButtonDelegate {
         
     }
     
-    
-    
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         print("Did log out of FaceBook ...")
     }

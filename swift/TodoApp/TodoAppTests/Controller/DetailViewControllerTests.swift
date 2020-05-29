@@ -16,6 +16,7 @@ class DetailViewControllerTests: XCTestCase {
     var sut: DetailViewController!
     
     override func setUpWithError() throws {
+         super.setUp()
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         sut = storyBoard.instantiateViewController(identifier: String(describing: DetailViewController.self)) as? DetailViewController
          sut.loadViewIfNeeded()

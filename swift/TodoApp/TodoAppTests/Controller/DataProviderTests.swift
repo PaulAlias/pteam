@@ -15,7 +15,7 @@ class DataProviderTests: XCTestCase {
     var controller: TaskListViewController!
     
     override func setUpWithError() throws {
-        
+         super.setUp()
         sut = DataProvider()
         sut.taskManager = TaskManager()
         

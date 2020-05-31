@@ -39,4 +39,6 @@ class DetailViewController: UIViewController {
             mapView.region = region
         }
     }
+    
+    
 }

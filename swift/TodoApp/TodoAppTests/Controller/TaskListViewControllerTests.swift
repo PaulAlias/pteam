@@ -62,7 +62,7 @@ class TaskListViewControllerTests: XCTestCase {
                    return NewTaskViewController()
                }
                
-               UIApplication.shared.keyWindow?.rootViewController = sut
+               UIApplication.shared.windows[0].rootViewController = sut
                
                sut.performSelector(onMainThread: action, with: newTaskButton, waitUntilDone: true)
         let newTaskViewController = sut.presentedViewController as! NewTaskViewController
@@ -96,6 +96,51 @@ class TaskListViewControllerTests: XCTestCase {
         XCTAssertTrue((sut.tableView as! MockTableView).isReloaded)
         
     }
+    //при тапе по ячейке отправляется уведомление
+    func testTappingCellSendsNotification() {
+        //создаем таск
+        let task = Task(title: "foo")
+       //помещаем в таск менеджер
+        sut.dataProvider.taskManager?.add(task: task)
+        
+        expectation(forNotification: NSNotification.Name("DidselectRow notification"), object: nil) { (notification) -> Bool in
+            
+            guard let taskFromNotification = notification.userInfo?["task"] as? Task else { return false }
+            
+            return task == taskFromNotification
+        }
+        //имитируем нажатие на ячейку
+        let tableView = sut.tableView
+        tableView?.delegate?.tableView!(tableView!, didSelectRowAt: IndexPath(row: 0, section: 0))
+        waitForExpectations(timeout: 1, handler: nil)
+    }
+    
+    func testSelectedCellNotificationPushesDetailViewController() {
+        let mockNavigationController = MockNavigationController(rootViewController: sut)
+        //UIApplication.shared.keyWindow?.rootViewController = mockNavigationController
+        UIApplication.shared.windows[0].rootViewController = mockNavigationController
+        
+        sut.loadViewIfNeeded()
+        
+        let task = Task(title: "foo")
+        let task1 = Task(title: "bar")
+        
+        sut.dataProvider.taskManager?.add(task: task)
+        sut.dataProvider.taskManager?.add(task: task1)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DidselectRow notification"), object: self, userInfo: ["task" : task1])
+        
+        guard let detailViewController = mockNavigationController.pushedViewController
+            as? DetailViewController else {
+                XCTFail()
+                return
+        }
+        
+        detailViewController.loadViewIfNeeded()
+        XCTAssertNotNil(detailViewController.titleLabel)
+        XCTAssertTrue(detailViewController.task == task1)
+        
+    }
     
 }
 
@@ -105,6 +150,18 @@ extension TaskListViewControllerTests {
         var isReloaded = false
         override func reloadData() {
             isReloaded = true
+        }
+    }
+}
+
+extension TaskListViewControllerTests {
+    class MockNavigationController: UINavigationController {
+        
+        var pushedViewController: UIViewController?
+        
+        override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+            pushedViewController = viewController
+            super.pushViewController(viewController, animated: animated)
         }
     }
 }

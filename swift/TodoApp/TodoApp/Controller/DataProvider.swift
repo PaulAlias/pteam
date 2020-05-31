@@ -25,9 +25,21 @@ extension DataProvider: UITableViewDelegate {
         
         switch section {
         case .todo:
-             return "Done"
+            return "Done"
         case .done:
-             return "Undone"
+            return "Undone"
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let section = Section(rawValue: indexPath.section) else { fatalError() }
+        
+        switch section {
+        case .todo:
+            let task = taskManager?.task(at: indexPath.row)
+            //посылаем уведомление отсюда
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DidselectRow notification"), object: self, userInfo: ["task": task])
+        case .done: break
         }
     }
 }
@@ -35,8 +47,8 @@ extension DataProvider: UITableViewDelegate {
 
 extension DataProvider: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         guard let section = Section(rawValue: section) else { fatalError() }
-         guard let taskManager = taskManager else { return 0 }
+        guard let section = Section(rawValue: section) else { fatalError() }
+        guard let taskManager = taskManager else { return 0 }
         switch section {
         case .todo:
             return taskManager.tasksCount
@@ -50,16 +62,17 @@ extension DataProvider: UITableViewDataSource {
         
         
         guard let section = Section(rawValue: indexPath.section) else { fatalError() }
-         guard let taskManager = taskManager else { fatalError() }
+        guard let taskManager = taskManager else { fatalError() }
         let task: Task
         
         switch section {
         case .todo:
-             task = taskManager.task(at: indexPath.row)
+            task = taskManager.task(at: indexPath.row)
         case .done:
-             task = taskManager.doneTasks(at: indexPath.row)
+            task = taskManager.doneTasks(at: indexPath.row)
         }
-            cell.configure(with: task)
+        
+        cell.configure(with: task, done: task.isDone)
         
         return cell
     }
@@ -76,9 +89,9 @@ extension DataProvider: UITableViewDataSource {
         
         switch section {
         case .todo:
-             taskManager.checkTask(at: indexPath.row)
+            taskManager.checkTask(at: indexPath.row)
         case .done:
-             taskManager.uncheckTask(at: indexPath.row)
+            taskManager.uncheckTask(at: indexPath.row)
         }
         
         tableView.reloadData()

@@ -36,8 +36,20 @@ class MainViewController: UITableViewController {
 
         cell.textLabel?.text = restaurantNames[indexPath.row]
         cell.imageView?.image = UIImage(named: restaurantNames[indexPath.row])
+        // нужно деать скругление на половину высоты картинки что бы получить окружность
+        cell.imageView?.layer.cornerRadius = cell.frame.size.height / 2
+        //обрезать края картинки
+        cell.imageView?.clipsToBounds = true
         
         return cell
+    }
+    
+    
+    // MARk - Table view delegate
+    
+    //высота ячеек
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 85
     }
 
     
